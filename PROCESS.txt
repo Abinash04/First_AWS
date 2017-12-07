@@ -122,6 +122,8 @@ from django.conf import global_settings
 
 os.environ.get(ENVIRONMENT_VARIABLE)
 
+FIX:***COPY THE FILES GIVEN IN GITHUB TO LOCAL SERVER IN /bin directory***
+
 5. Start the Django development server:
 
  $ python manage.py runserver
