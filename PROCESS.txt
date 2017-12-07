@@ -1,0 +1,205 @@
+1. INSTTALLATION OF virtualenv in LINUX
+
+Last login: Tue Dec  5 01:01:44 2017 from 192.168.174.1
+abinash@ubuntu:~$ virtualenv .venv
+The program 'virtualenv' is currently not installed. You can install it by typing:
+sudo apt install virtualenv
+abinash@ubuntu:~$
+abinash@ubuntu:~$
+abinash@ubuntu:~$ sudo apt install virtualenv
+[sudo] password for abinash:
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  python3-virtualenv
+The following NEW packages will be installed:
+  python3-virtualenv virtualenv
+0 upgraded, 2 newly installed, 0 to remove and 30 not upgraded.
+Need to get 47.5 kB of archives.
+After this operation, 171 kB of additional disk space will be used.
+Do you want to continue? [Y/n] Y
+Get:1 http://in.archive.ubuntu.com/ubuntu zesty/universe i386 python3-virtualenv all 15.1.0+ds-1 [43.2 kB]
+Get:2 http://in.archive.ubuntu.com/ubuntu zesty/universe i386 virtualenv all 15.1.0+ds-1 [4,376 B]
+Fetched 47.5 kB in 1s (40.8 kB/s)
+Selecting previously unselected package python3-virtualenv.
+(Reading database ... 105650 files and directories currently installed.)
+Preparing to unpack .../python3-virtualenv_15.1.0+ds-1_all.deb ...
+Unpacking python3-virtualenv (15.1.0+ds-1) ...
+Selecting previously unselected package virtualenv.
+Preparing to unpack .../virtualenv_15.1.0+ds-1_all.deb ...
+Unpacking virtualenv (15.1.0+ds-1) ...
+Setting up python3-virtualenv (15.1.0+ds-1) ...
+Processing triggers for man-db (2.7.6.1-2) ...
+Setting up virtualenv (15.1.0+ds-1) ...
+abinash@ubuntu:~$
+
+2. CREATE PYTHON VIRTUAL ENV.
+
+abinash@ubuntu:~$ virtualenv .venv
+Running virtualenv with interpreter /usr/bin/python2
+New python executable in /home/abinash/.venv/bin/python2
+Also creating executable in /home/abinash/.venv/bin/python
+Installing setuptools, pkg_resources, pip, wheel...done.
+abinash@ubuntu:~$
+
+3. ACTIVATE VIRTUAL ENV
+
+abinash@ubuntu:~$ cd .venv
+abinash@ubuntu:~/.venv$ ls
+bin  include  lib  local  share
+abinash@ubuntu:~/.venv$ cd bin
+abinash@ubuntu:~/.venv/bin$ ls
+activate  activate.csh  activate.fish  activate_this.py  easy_install  easy_install-2.7  pip  pip2  pip2.7  python  python2  python2.7  python-config  wheel
+abinash@ubuntu:~/.venv/bin$ file activate
+activate: ASCII text
+abinash@ubuntu:~/.venv/bin$
+abinash@ubuntu:~/.venv/bin$
+abinash@ubuntu:~/.venv/bin$ pwd
+/home/abinash/.venv/bin
+abinash@ubuntu:~/.venv/bin$
+abinash@ubuntu:~/.venv/bin$ cd
+abinash@ubuntu:~$ source /home/abinash/.venv/bin/activate
+(.venv) abinash@ubuntu:~$
+(.venv) abinash@ubuntu:~$
+(.venv) abinash@ubuntu:~$
+
+
+(.venv) abinash@ubuntu:~/.venv/bin$ source activate activate
+(.venv) abinash@ubuntu:~/.venv/bin$ $?
+0: command not found
+(.venv) abinash@ubuntu:~/.venv/bin$ pwd
+/home/abinash/.venv/bin
+(.venv) abinash@ubuntu:~/.venv/bin$
+
+
+4. create a local file requirements.txt: copy the contents given from github file
+
+(.venv) abinash@ubuntu:~/.venv/bin$ vi requirements.txt
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$ pip install -r requirements.txt
+Collecting Django==1.9.2 (from -r requirements.txt (line 1))
+  Downloading Django-1.9.2-py2.py3-none-any.whl (6.6MB)
+    46% |██████████████▉                 | 3.0MB 376kB/s eta 0:00:10
+	Installing collected packages: Django
+Successfully installed Django-1.9.2
+(.venv) abinash@ubuntu:~/.venv/bin$
+
+Issues:
+
+(.venv) abinash@ubuntu:~/.venv/bin$ python manage.py runserver
+Traceback (most recent call last):
+  File "manage.py", line 10, in <module>
+    execute_from_command_line(sys.argv)
+  File "/home/abinash/.venv/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 353, in execute_from_command_line
+    utility.execute()
+  File "/home/abinash/.venv/local/lib/python2.7/site-packages/django/core/management/__init__.py", line 302, in execute
+    settings.INSTALLED_APPS
+  File "/home/abinash/.venv/local/lib/python2.7/site-packages/django/conf/__init__.py", line 55, in __getattr__
+    self._setup(name)
+  File "/home/abinash/.venv/local/lib/python2.7/site-packages/django/conf/__init__.py", line 43, in _setup
+    self._wrapped = Settings(settings_module)
+  File "/home/abinash/.venv/local/lib/python2.7/site-packages/django/conf/__init__.py", line 99, in __init__
+    mod = importlib.import_module(self.SETTINGS_MODULE)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+ImportError: No module named ebdjango.settings
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$
+(.venv) abinash@ubuntu:~/.venv/bin$ pwd
+/home/abinash/.venv/bin
+
+
+import importlib
+import os
+import time
+import warnings
+
+from django.conf import global_settings
+
+os.environ.get(ENVIRONMENT_VARIABLE)
+
+5. Start the Django development server:
+
+ $ python manage.py runserver
+
+(.venv) abinash@ubuntu:~/.venv/bin$ python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+
+You have unapplied migrations; your app may not work properly until they are applied.
+Run 'python manage.py migrate' to apply them.
+
+December 07, 2017 - 04:40:02
+Django version 1.9.2, using settings 'ebdjango.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+
+6. RUN MIGRATIONS:
+
+(.venv) abinash@ubuntu:~/.venv/bin$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, contenttypes, auth, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying sessions.0001_initial... OK
+(.venv) abinash@ubuntu:~/.venv/bin$
+
+
+(.venv) abinash@ubuntu:~/.venv/bin$ python manage.py runserver 192.168.174.133:8000
+Performing system checks...
+
+System check identified no issues (0 silenced).
+December 07, 2017 - 04:48:10
+Django version 1.9.2, using settings 'ebdjango.settings'
+Starting development server at http://192.168.174.133:8000/
+Quit the server with CONTROL-C.
+[07/Dec/2017 04:48:26] "GET / HTTP/1.1" 200 6651
+[07/Dec/2017 04:48:26] "GET /static/helloworld/css/styles.css HTTP/1.1" 404 1795
+[07/Dec/2017 04:48:26] "GET /static/helloworld/css/gradients.css HTTP/1.1" 404 1804
+[07/Dec/2017 04:48:26] "GET /static/helloworld/js/set-background.js HTTP/1.1" 404 1813
+[07/Dec/2017 04:48:26] "GET /static/helloworld/img/tweet.svg HTTP/1.1" 404 1792
+Not Found: /favicon.ico
+[07/Dec/2017 04:48:26] "GET /favicon.ico HTTP/1.1" 404 2222
+[07/Dec/2017 04:48:49] "GET /static/helloworld/js/set-background.js HTTP/1.1" 404 1813
+[07/Dec/2017 04:48:49] "GET /static/helloworld/css/gradients.css HTTP/1.1" 404 1804
+[07/Dec/2017 04:48:49] "GET /static/helloworld/img/tweet.svg HTTP/1.1" 404 1792
+[07/Dec/2017 04:48:55] "GET /static/helloworld/js/set-background.js HTTP/1.1" 404 1813
+[07/Dec/2017 04:48:55] "GET /static/helloworld/css/gradients.css HTTP/1.1" 404 1804
+[07/Dec/2017 04:50:00] "GET / HTTP/1.1" 200 6651
+[07/Dec/2017 04:50:00] "GET /static/helloworld/css/gradients.css HTTP/1.1" 404 1804
+[07/Dec/2017 04:50:00] "GET /static/helloworld/css/styles.css HTTP/1.1" 404 1795
+[07/Dec/2017 04:50:00] "GET /static/helloworld/js/set-background.js HTTP/1.1" 404 1813
+[07/Dec/2017 04:50:00] "GET /static/helloworld/img/tweet.svg HTTP/1.1" 404 1792
+[07/Dec/2017 04:50:37] "GET /static/helloworld/js/set-background.js HTTP/1.1" 404 1813
+[07/Dec/2017 04:50:37] "GET /static/helloworld/img/tweet.svg HTTP/1.1" 404 1792
+[07/Dec/2017 04:50:37] "GET /static/helloworld/css/gradients.css HTTP/1.1" 404 1804
+[07/Dec/2017 04:50:37] "GET /static/helloworld/css/styles.css HTTP/1.1" 404 1795
+^Z
+[1]+  Stopped                 python manage.py runserver 192.168.174.133:8000
+
+access the below URL:
+
+http://192.168.174.133:8000/
+
+Congratulations!
+
+You just created a Python Django web application!
+
+Designed and developed with ♥ in Seattle.
